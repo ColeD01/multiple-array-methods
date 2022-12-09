@@ -35,15 +35,26 @@ var peopleArray = [
         age: 82
     }
 ]
+function sortedOfAge(arr) {
+  //? how does this work
+  //! need to learn how to do this 
+  //* this is cool 
+  //TODO i need to do this 
+    arr.sort(function (a, b) {
+      const textA = a.firstName.toUpperCase();
+      const textB = b.lastName.toUpperCase();
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
+    });
+    arr.sort(function (a, b) {
+        return a.lastName.localeCompare(b.lastName);
+      });
 
-function sortedOfAge(peopleArray) {
-    var result = peopleArray.reduce(function(final,people) {
-        if (people.age >= 18) {
-            final.push(people)
-        }
-        
-        return final
-    }, [])
-    return result
-}
+    return arr.reduce(function (final, person) {
+      if (person.age >= 18)
+        final.push(
+          `<li> ${person.firstName} ${person.lastName} age: ${person.age} </li>`
+        );
+      return final;
+    }, []);
+  }
 console.log(sortedOfAge(peopleArray))
